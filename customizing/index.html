@@ -1,0 +1,1018 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="IBM watsonx Code Assistant for Red Hat Ansible Lightspeed - Generative AI Training">
+      
+      
+        <meta name="author" content="Christopher Bienko (cdbienko@us.ibm.com)">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.1">
+    
+    
+      
+        <title>Task Description Tuning and Model Customization - IBM watsonx Code Assistant for Red Hat Ansible Lightspeed - Generative AI Training</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.69437709.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#precision-is-key-for-the-disambiguation-of-natural-language-prompts" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="IBM watsonx Code Assistant for Red Hat Ansible Lightspeed - Generative AI Training" class="md-header__button md-logo" aria-label="IBM watsonx Code Assistant for Red Hat Ansible Lightspeed - Generative AI Training" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IBM watsonx Code Assistant for Red Hat Ansible Lightspeed - Generative AI Training
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Task Description Tuning and Model Customization
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="IBM watsonx Code Assistant for Red Hat Ansible Lightspeed - Generative AI Training" class="md-nav__button md-logo" aria-label="IBM watsonx Code Assistant for Red Hat Ansible Lightspeed - Generative AI Training" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    IBM watsonx Code Assistant for Red Hat Ansible Lightspeed - Generative AI Training
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../evaluation/" class="md-nav__link">
+        Evaluation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setup/" class="md-nav__link">
+        Setup and Troubleshooting
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../generating/" class="md-nav__link">
+        Generating Code
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../source-matching-post-processing/" class="md-nav__link">
+        Content Source Matching and Post-Processing
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Task Description Tuning and Model Customization
+      </a>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../advanced/" class="md-nav__link">
+        (OPTIONAL) Deploying a Live AWS EC2 Instance and WordPress Application
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../archived/" class="md-nav__link">
+        /
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="precision-is-key-for-the-disambiguation-of-natural-language-prompts"><strong>Precision</strong> is key for the disambiguation of natural language prompts</h1>
+<h1 id="_1"></h1>
+<p>In this section, you will experiment with customized Ansible Playbooks and test how changes made to an Ansible Task's natural language descriptions can impact the recommended code produced by <em>IBM watsonx Code Assistant for Red Hat Ansible Lightspeed</em> (<strong>WCA</strong>).</p>
+<div class="admonition note">
+<p class="admonition-title">UNPREDICTABLE RESULTS FROM GENERATIVE AI &amp; LLMs</p>
+<p>A consequence of using generative AI and Large Language Models (LLMs) is that the recommended code output of these systems will never be 100% consistent for each and every execution. For this reason, LLMs are referred to as "non-deterministic" systems — as opposed to "deterministic" systems. This is both a strength and weakness of LLMs. As you will observe in this module, even a slight modification to the Task description or the smallest change to how a Playbook is structured— the descriptions used, the variables set, and so on —will influence AI-generated code recommendations.</p>
+<p>The iterative process that you will go through in this module can be viewed in three different ways:</p>
+<ol>
+<li>
+<p>On the one hand, it shows the sensitivity of generative AI models to even the most nuanced change in <strong>natural language prompts</strong> — for good or bad. generative AI can produce tremendous work and that output is further guided along by best practices built-in from Red Hat and IBM. But in the end, the AI can only infer user intent from the natural language descriptions supplied to it. The more clearly a user defines their Task descriptions and intent, the more likely that WCA will correctly generate code which mirrors that intent; conversely, the less precise those descriptions are, the more likely WCA will misinterpret and miss the mark. Precision <em>is</em> key to the disambiguation of natural language prompts.</p>
+</li>
+<li>
+<p>Human feedback and <strong>humans-in-the-loop</strong> are essential to these formative stages of generative AI. As offerings like WCA mature, the natural language processing capabilities of the service will continue to be refined and improved. Additional packages, functions, and training data from Ansible Galaxy (as well as other sources) are continuously being added to the product's Foundation Models, which will in turn continually improve the AI-generated code recommendations made to users. Feedback can be directly supplied via the WCA extension for VS Code and <a href="https://docs.ai.ansible.redhat.com/contributing/#ansible-galaxy" target="_blank">additional ways to support model training are documented online</a>.</p>
+</li>
+<li>
+<p>By using the <strong>Model Tuning</strong> capabilities built into <em>IBM watsonx Code Assistant</em> organizations and users are able to customize the recommendations produced by generative AI, tuning a domain-specific LLM with the organization's <em>own</em> Ansible Playbooks. The content and code recommendations that WCA suggests can be tailored to an organization's standards, best practices, and programming styles. These capabilities will be explored later in this module.</p>
+</li>
+</ol>
+</div>
+<p>The take-away here is that <strong>your results may vary</strong>: they may differ from the <code>SOLUTION</code> code presented in the examples below. Keep this in mind as you work through the examples in this section and understand that it is not a bug, but rather a consequence of working with generative AI in general.</p>
+<p>The precision with which a Playbook author describes the automation Task in natural language will determine the accuracy and effectiveness of WCA's generated code recommendations.</p>
+<hr />
+<ol>
+<li>
+<p>A template <code>CUSTOM PLAYBOOK #1</code> YAML file has been prepared for you below.</p>
+<ul>
+<li>
+<p>Copy and paste the code from the <code>TEMPLATE</code> tab into a <strong>New File...</strong> within VS Code</p>
+</li>
+<li>
+<p>Name and save the file as you see fit: for example, <code>customplaybook1.yml</code></p>
+</li>
+</ul>
+<details class="quote">
+<summary>HOW TO CREATE NEW <code>YAML</code> PLAYBOOKS</summary>
+<p><strong>Note:</strong> You need to copy and paste the contents of the Playbook into a <strong>New File...</strong> within the <em>same</em> Lightspeed project directory that was used for the previous lab modules in order for the VS Code extension to engage.</p>
+<p>To create a new YAML Playbook within a VS Code environment:</p>
+<p><strong>a.</strong> Copy the contents of the Playbook to clipboard using the button in the top-right corner of the lab guide code block.</p>
+<p><a class="glightbox" href="../_attachments/figure18.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/figure18.png" width="400" /></a></p>
+<p><strong>b.</strong> Return to your VS Code environment. In the top-left corner of the interface, with your Ansible Lightspeed folder selected, click the <strong>New File...</strong> button.</p>
+<p><a class="glightbox" href="../_attachments/figure19.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/figure19.png" width="400" /></a></p>
+<p><strong>c.</strong> Name the file to a description of your choosing, ending with <code>.yml</code> as the filetype. Set it to <code>CustomPlaybook.yml</code>, for example. Save it to one of the directories in the <code>ansible-wca-demo-kit</code> folder.</p>
+<p><strong>d.</strong> Paste the clipboard contents into the YAML file and follow along with the suggestions below.</p>
+</details>
+<details class="quote">
+<summary>COPY AND PASTE CODE WITHIN THE VM</summary>
+<p>Information "copied" to your local machine's clipboard cannot be "pasted" directly into the virtual machine (VM) environment or VS Code. If you wish to copy and paste instructions directly from the lab documentation, it is recommended that you open the GitHub instructions <strong>inside</strong> the VM's web browser (Firefox). This will allow you to copy instructions to the VM's clipboard and paste instructions inside the VS Code editor.</p>
+</details>
+<details class="quote">
+<summary>ANSIBLE LIGHTSPEED IS MISSING OR CODE RECOMMENDATIONS ARE NOT GENERATING</summary>
+<p>Ansible Lightspeed and WCA will only generate code recommendations for <em>Ansible Playbooks</em> and <em>YAML</em> files. VS Code will typically auto-detect the programming language of the document you're working with, but on occassion you may need to manually specify the language. Even if working with a YAML file, you'll still need to specify the language mode as <code>Ansible</code> for the Lightspeed plugin to engage.</p>
+<p>To set the language mode correctly:</p>
+<ul>
+<li>
+<p>In the bottom-right corner of the VS Code interface, hover over the <strong>Select Language Mode</strong> toggle<sup>[A]</sup></p>
+</li>
+<li>
+<p>A console will appear at the top of VS Code with a drop-down list of options<sup>[B]</sup></p>
+</li>
+<li>
+<p>Click <code>Ansible</code> from the suggested languages, or enter the text yourself and hit <span class="keys"><kbd class="key-enter">Enter</kbd></span></p>
+</li>
+<li>
+<p>Confirm that the Select Language Mode toggle in the bottom-right corner displays <code>Ansible</code></p>
+</li>
+</ul>
+<p><br/>
+<a class="glightbox" href="../_attachments/troubleshooting-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/troubleshooting-2.png" width="600" /></a></p>
+<p><a class="glightbox" href="../_attachments/troubleshooting-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/troubleshooting-3.png" width="600" /></a></p>
+</details>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">CUSTOM PLAYBOOK 1</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#__codelineno-0-16">16</a></span>
+<span class="normal"><a href="#__codelineno-0-17">17</a></span>
+<span class="normal"><a href="#__codelineno-0-18">18</a></span>
+<span class="normal"><a href="#__codelineno-0-19">19</a></span>
+<span class="normal"><a href="#__codelineno-0-20">20</a></span>
+<span class="normal"><a href="#__codelineno-0-21">21</a></span>
+<span class="normal"><a href="#__codelineno-0-22">22</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c1"># CUSTOM PLAYBOOK #1 — Invoke 2 modules to automatically update 2 types of servers.</span><span class="w"></span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="nn">---</span><span class="w"></span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="c1"># TASK 1</span><span class="w"></span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Update web servers</span><span class="w"></span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">  </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">webservers</span><span class="w"></span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">  </span><span class="nt">become</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">  </span><span class="nt">tasks</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ensure apache is at the latest version</span><span class="w"></span>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Write the apache config file</span><span class="w"></span>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="c1"># TASK 2</span><span class="w"></span>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Update db servers</span><span class="w"></span>
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="w">  </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">databases</span><span class="w"></span>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="w">  </span><span class="nt">become</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a>
+<a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="w">  </span><span class="nt">tasks</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ensure postgresql is at the latest version</span><span class="w"></span>
+<a id="__codelineno-0-21" name="__codelineno-0-21"></a>
+<a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ensure that postgresql is started</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+</li>
+</ol>
+<hr />
+<ol start="2">
+<li>
+<p>The template <code>CUSTOM PLAYBOOK #1</code> contains two sets of tasks:</p>
+<ul>
+<li>
+<p><code>TASK 1</code> (<strong>Lines 5-12</strong>) checks whether or not web server software is up to date and runs the update if necessary</p>
+</li>
+<li>
+<p><code>TASK 2</code> (<strong>Lines 15-22</strong>) checks whether or not database server software is up to date and runs the update if necessary</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="3">
+<li>Examine the instruction on <strong>Line 12</strong>, which prompts Ansible to create ("write") a configuration file for an Apache webserver:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Write the apache config file</span><span class="w"></span>
+</code></pre></div></li>
+</ol>
+<hr />
+<ol start="4">
+<li>
+<p>Place your cursor at the end of <strong>Line 12</strong> and press <span class="keys"><kbd class="key-enter">Enter</kbd></span> to generate WCA-recommended code for the task. Accept the recommendation by pressing <span class="keys"><kbd class="key-tab">Tab</kbd></span>.</p>
+<p>Two tabs are presented below:</p>
+<ul>
+<li>
+<p><code>AI-GENERATED CODE</code> shows the output from running WCA's generative AI capabilities on <strong>Line 12</strong> of the unmodified <em>CUSTOM PLAYBOOK #1</em> YAML template.</p>
+</li>
+<li>
+<p><code>SOLUTION CODE</code> shows the expected (correct) code for performing the task that was written by a human programmer. In theory, the AI-generated code <em>should</em> be as good— or even superior to —the manually-written solution code. </p>
+</li>
+</ul>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">AI-GENERATED CODE</label><label for="__tabbed_2_2">SOLUTION CODE</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span>
+<span class="normal"><a href="#__codelineno-2-4">4</a></span>
+<span class="normal"><a href="#__codelineno-2-5">5</a></span>
+<span class="normal"><a href="#__codelineno-2-6">6</a></span>
+<span class="normal"><a href="#__codelineno-2-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Write the apache config file</span><span class="w"></span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">  </span><span class="nt">ansible.builtin.template</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">    </span><span class="nt">src</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">templates/apache.conf.j2</span><span class="w"></span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">    </span><span class="nt">dest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/apache2/sites-available/000-default.conf</span><span class="w"></span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span><span class="w"></span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="w">    </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span><span class="w"></span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="w">    </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;0644&#39;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span>
+<span class="normal"><a href="#__codelineno-3-3">3</a></span>
+<span class="normal"><a href="#__codelineno-3-4">4</a></span>
+<span class="normal"><a href="#__codelineno-3-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Write the apache config file</span><span class="w"></span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="w">  </span><span class="nt">ansible.builtin.template</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="w">    </span><span class="nt">src</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/srv/httpd.j2</span><span class="w"></span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">    </span><span class="nt">dest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/httpd.config</span><span class="w"></span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="w">    </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0644&quot;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+</li>
+</ol>
+<hr />
+<ol start="5">
+<li>
+<p>As you can see, the <code>AI-GENERATED CODE</code> recommendations satisfy some of the requests, but also miss the mark in a few areas. When compared to the <code>SOLUTION CODE</code> tab:</p>
+<ul>
+<li>
+<p>Both tabs appropriately utilize the <code>ansible.builtin.template:</code> Collectio, which for this request is absolutely correct. <em>Interesting fact</em>: earlier (circa 2023) versions of WCA produced code recommendations that <em>did not</em> align with the solution, for the same task description. Instead, the recommendation was for the <code>ansible.builtin.copy:</code> Collection to invoke <code>content: "{{ _content_ }}"</code>, which is not correct. This speaks to the continuously improving capabilities of the WCA and IBM Granite models.</p>
+</li>
+<li>
+<p><code>AI-GENERATED CODE</code> recommended including statements that explicitly set <code>owner: root</code> and <code>group: root</code>, which are both appropriate when permissions are set to <code>mode: '0644</code>. While not strictly necessary, these additional statements arguably are an <em>improvement</em> over the <code>SOLUTION CODE</code> results. It's also worth noting that the request to write the apache config file did not explicitly request <code>mode: '0644</code> in the natural language description, but WCA nevertheless recommended it as this is a best practice for deploying Apache webservers.</p>
+</li>
+<li>
+<p>The <code>src:</code> and <code>dest:</code> attributes are not in agreement across the <code>AI-GENERATED CODE</code> and <code>SOLUTION CODE</code> tabs. This is an area for improvement. The natural language description wasn't precise about these details; therefore, this is an opportunity where more detailed and verbose instructions could better steer the recommendations WCA returns back with. </p>
+</li>
+</ul>
+<div class="admonition warning">
+<p>In general, <strong>the more ambiguous the Task description, the greater the likelihood that WCA will misinterpret the author's intent</strong> and suggest unwanted Ansible automation jobs. To help disambiguate our intention, Playbook authors should use more precise natural language terms and descriptions.</p>
+</div>
+</li>
+</ol>
+<hr />
+<ol start="6">
+<li>
+<p>Delete the WCA-suggested lines of code from <em>Step 4</em> from the Playbook.</p>
+<p>Re-write the description on <strong>Line 12</strong> to the following code block, then press <span class="keys"><kbd class="key-enter">Enter</kbd></span> and <span class="keys"><kbd class="key-tab">Tab</kbd></span> to accept the new WCA code recommendations. Take note of the much more precise language used to describe the <code>src:</code> and <code>dest:</code> attributes.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Write the apache config file where src equals httpd.j2 and dest equals httpd.config</span><span class="w"></span>
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="7">
+<li>
+<p>The resulting WCA-recommended code should be similar to the <code>AI-GENERATED CODE</code> tab below. When compared to the <code>SOLUTION CODE</code> tab:</p>
+<ul>
+<li>
+<p>The <code>src: httpd.j2</code> recommendation in the <code>AI-GENERATED CODE</code> tab is an exact match to the natural language description set in <em>Step 6</em>, and only slightly different (in terms of the directory path used) to the <code>src: /srv/httpd.j2</code> variable in the <code>SOLUTION CODE</code> tab.</p>
+</li>
+<li>
+<p>The <code>dest: /etc/httpd/conf/httpd.conf</code> recommendation in the <code>AI-GENERATER CODE</code> tab, unfortunately, still deviates from the <code>httpd.config</code> (not the same as <code>httpd.conf</code>) destination that was requested in the natural language description. Close, but still far from exact and not matching our specifications. However, it's a vast improvement over the <code>dest: /etc/apache2/sites-available/000-default.conf</code> destination that was recommended as a result of <em>Step 4</em>'s more ambiguous task description.</p>
+</li>
+<li>
+<p>Perplexingly, the <code>mode: '0644'</code> recommendation that was made previously in <em>Step 4</em> has been left out of the suggested task code. We can speculate as to why— perhaps the more precise natural language description made in <em>Step 6</em> prompted WCA to only generate code for exactly what was specified —but the "black box" nature of generative AI means that we cannot know for certain. Perhaps with another, even more precise iteration the <code>AI-GENERATED CODE</code> will match the <code>SOLUTION CODE</code>?</p>
+</li>
+</ul>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">AI-GENERATED CODE</label><label for="__tabbed_3_2">SOLUTION CODE</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span>
+<span class="normal"><a href="#__codelineno-5-3">3</a></span>
+<span class="normal"><a href="#__codelineno-5-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Write the apache config file where src equals httpd.j2 and dest equals httpd.config</span><span class="w"></span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="w">  </span><span class="nt">ansible.builtin.template</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="w">    </span><span class="nt">src</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">httpd.j2</span><span class="w"></span>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="w">    </span><span class="nt">dest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/httpd/conf/httpd.conf</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span>
+<span class="normal"><a href="#__codelineno-6-3">3</a></span>
+<span class="normal"><a href="#__codelineno-6-4">4</a></span>
+<span class="normal"><a href="#__codelineno-6-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Write the apache config file</span><span class="w"></span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="w">  </span><span class="nt">ansible.builtin.template</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="w">    </span><span class="nt">src</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/srv/httpd.j2</span><span class="w"></span>
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="w">    </span><span class="nt">dest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/httpd.config</span><span class="w"></span>
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="w">    </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0644&quot;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+</li>
+</ol>
+<hr />
+<ol start="8">
+<li>
+<p>Iterate on the lessons learned in <em>Step 7</em> and modify the task description to include more details on the permissions applied to the Apache webserver.</p>
+<ul>
+<li>
+<p>Delete the WCA-suggested lines of code from <em>Step 6</em> from the Playbook.</p>
+</li>
+<li>
+<p>Re-write the description on <strong>Line 12</strong> to the following code block, then press <span class="keys"><kbd class="key-enter">Enter</kbd></span> and <span class="keys"><kbd class="key-tab">Tab</kbd></span> to accept the new WCA code recommendations. Take note of the much more precise language used to describe the <code>mode:</code> attribute.</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Write the apache config file where src equals httpd.j2 and dest equals httpd.config and mode equals 0644</span><span class="w"></span>
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="9">
+<li>
+<p>Once again, the resulting WCA-recommended code should be similar to the <code>AI-GENERATED CODE</code> tab below. When compared to the <code>SOLUTION CODE</code> tab:</p>
+<ul>
+<li>
+<p>WCA correctly picked up on the <code>mode: '0644'</code> request made in the modified task description. There is now alignment between the two tabs.</p>
+</li>
+<li>
+<p>With only a few iterations and by disambiguating the natural language description of the Ansible Task to be performed, the code recommendations produced by WCA have been markedly improved.</p>
+</li>
+</ul>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">AI-GENERATED CODE</label><label for="__tabbed_4_2">SOLUTION CODE</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
+<span class="normal"><a href="#__codelineno-8-2">2</a></span>
+<span class="normal"><a href="#__codelineno-8-3">3</a></span>
+<span class="normal"><a href="#__codelineno-8-4">4</a></span>
+<span class="normal"><a href="#__codelineno-8-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Write the apache config file where src equals httpd.j2 and dest equals httpd.config and mode equals 0644</span><span class="w"></span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="w">  </span><span class="nt">ansible.builtin.template</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="w">    </span><span class="nt">src</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">httpd.j2</span><span class="w"></span>
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="w">    </span><span class="nt">dest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/httpd/conf/httpd.conf</span><span class="w"></span>
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="w">    </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;0644&#39;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
+<span class="normal"><a href="#__codelineno-9-2">2</a></span>
+<span class="normal"><a href="#__codelineno-9-3">3</a></span>
+<span class="normal"><a href="#__codelineno-9-4">4</a></span>
+<span class="normal"><a href="#__codelineno-9-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Write the apache config file</span><span class="w"></span>
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="w">  </span><span class="nt">ansible.builtin.template</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="w">    </span><span class="nt">src</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/srv/httpd.j2</span><span class="w"></span>
+<a id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="w">    </span><span class="nt">dest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/httpd.config</span><span class="w"></span>
+<a id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="w">    </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0644&quot;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+</li>
+</ol>
+<hr />
+<h1 id="_2"></h1>
+<h1 id="model-customization">Model customization</h1>
+<p>Since every organization is different, WCA allows users to customize the AI model output to your organization's unique Ansible Playbooks. This allows for personalized code recommendations that are a better fit to your business' unique needs and more accurate to programming standards set within your organization.</p>
+<p>In this scenario, your organization has its own set of Ansible Playbooks that leverage your preferred public cloud provider that uses specific Ansible Modules to manage OpenShift clusters.</p>
+<hr />
+<ol start="10">
+<li>
+<p>Open the <code>tuning-example.yml</code> Playbook located within the <code>Model Customization</code> subdirectory of the hands-on lab templates. The full directory address, as well as the Playbook code, are encapsulated in the following code block.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">~/ansible-wca-demo-kit/Model Customization/tuning-example.yml</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
+<span class="normal"><a href="#__codelineno-10-2">2</a></span>
+<span class="normal"><a href="#__codelineno-10-3">3</a></span>
+<span class="normal"><a href="#__codelineno-10-4">4</a></span>
+<span class="normal"><a href="#__codelineno-10-5">5</a></span>
+<span class="normal"><a href="#__codelineno-10-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="nn">---</span><span class="w"></span>
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deploy infrastructure</span><span class="w"></span>
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">all</span><span class="w"></span>
+<a id="__codelineno-10-4" name="__codelineno-10-4"></a>
+<a id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="nt">tasks</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-10-6" name="__codelineno-10-6"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Create an OpenShift cluster</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+<details class="warning">
+<summary>ANSIBLE LIGHTSPEED IS MISSING OR CODE RECOMMENDATIONS ARE NOT GENERATING</summary>
+<p>Ansible Lightspeed and WCA will only generate code recommendations for <em>Ansible Playbooks</em> and <em>YAML</em> files. VS Code will typically auto-detect the programming language of the document you're working with, but on occassion you may need to manually specify the language. Even if working with a YAML file, you'll still need to specify the language mode as <code>Ansible</code> for the Lightspeed plugin to engage.</p>
+<p>To set the language mode correctly:</p>
+<ul>
+<li>
+<p>In the bottom-right corner of the VS Code interface, hover over the <strong>Select Language Mode</strong> toggle<sup>[A]</sup></p>
+</li>
+<li>
+<p>A console will appear at the top of VS Code with a drop-down list of options<sup>[B]</sup></p>
+</li>
+<li>
+<p>Click <code>Ansible</code> from the suggested languages, or enter the text yourself and hit <span class="keys"><kbd class="key-enter">Enter</kbd></span></p>
+</li>
+<li>
+<p>Confirm that the Select Language Mode toggle in the bottom-right corner displays <code>Ansible</code></p>
+</li>
+</ul>
+<p><br/>
+<a class="glightbox" href="../_attachments/troubleshooting-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/troubleshooting-2.png" width="600" /></a></p>
+<p><a class="glightbox" href="../_attachments/troubleshooting-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/troubleshooting-3.png" width="600" /></a></p>
+</details>
+</li>
+</ol>
+<hr />
+<ol start="11">
+<li>
+<p>Before performing any model tuning tasks, try generating code recommendations for the OpenShift cluster creation task by placing your cursor at the end of <strong>Line 6</strong>, hitting <span class="keys"><kbd class="key-enter">Enter</kbd></span>, and then accepting the default recommendations by hitting <span class="keys"><kbd class="key-tab">Tab</kbd></span>. The resulting code recommendations— displayed below —represent the standard, unmodified output from WCA's <em>IBM Granite</em> models.</p>
+<ul>
+<li>
+<p>When using the standard <em>IBM Granite</em> model recommendations, it recommends making use of the <code>ansible.builtin.command</code> Ansible Module — which is a standard, best-practice way to perform these types of deployments.</p>
+</li>
+<li>
+<p>However, <em>your</em> particular organization (and the public cloud provider they use for deploying OpenShift clusters) might require the use of different Ansible Modules. The following steps will explore how to tailor WCA-generated code blocks to the unique needs of a business.</p>
+</li>
+</ul>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">STANDARD <em>IBM GRANITE</em> MODEL RECOMMENDATIONS</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-11-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-11-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-11-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-11-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-11-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-11-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-11-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-11-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-11-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="nn">---</span><span class="w"></span>
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deploy infrastructure</span><span class="w"></span>
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">all</span><span class="w"></span>
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a>
+<a id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="nt">tasks</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-11-6" name="__codelineno-11-6"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Create an OpenShift cluster</span><span class="w"></span>
+<a id="__codelineno-11-7" name="__codelineno-11-7"></a><span class="w">    </span><span class="nt">ansible.builtin.command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oadm create-cluster --wait=false --name=openshift-cluster</span><span class="w"></span>
+<a id="__codelineno-11-8" name="__codelineno-11-8"></a><span class="w">    </span><span class="nt">register</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oadm_create_cluster</span><span class="w"></span>
+<a id="__codelineno-11-9" name="__codelineno-11-9"></a><span class="w">    </span><span class="nt">changed_when</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&#39;created&#39;</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">oadm_create_cluster.stdout&quot;</span><span class="w"></span>
+<a id="__codelineno-11-10" name="__codelineno-11-10"></a><span class="w">    </span><span class="nt">failed_when</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&#39;already</span><span class="nv"> </span><span class="s">exists&#39;</span><span class="nv"> </span><span class="s">not</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">oadm_create_cluster.stdout&quot;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">DATA PREPARATION &amp; MODEL TRAINING</p>
+<p>Given the scope and time available for this hands-on training, <strong>participants will not be manually creating the training data or training models themselves.</strong> Instead, you will utilize a prepared customized model (<code>Model ID</code>) and experiment in <em>Step 12</em> onwards with how the customized model impacts WCA's code recommendations.</p>
+<ul>
+<li>
+<p>The process of building Ansible training data and tuning customized models for generative AI is potentially a complex and time-consuming one. </p>
+</li>
+<li>
+<p>For example, the model tuning employed in the steps ahead for the creation of an OpenShift cluster according to an enterprise organization's specific standards requires approximately <strong>4 hours</strong> to train and generate a customized AI model.</p>
+</li>
+</ul>
+<p>In preparation for model tuning, an organization or user can transform their existing Playbooks into training data for <strong>IBM watsonx</strong> using the open-source <strong><a href="https://github.com/ansible/ansible-content-parser" target="_blank">Ansible Parser Tool</a></strong>. The tooling analyzes Ansible Playbooks and generates a single <strong>JSONL</strong> (<code>ftdata.jsonl</code> formatted) file that can be uploaded to WCA's model tuning studio for developing customized AI models.</p>
+<ul>
+<li>
+<p>The process of calibrating and running the Ansible Parser Tool is time-consuming and potentially quite complex, depending on the scope of Playbooks that an organization wishes to analyze and prepare for model tuning. This falls outside the scope of the hands-on material for this training.</p>
+</li>
+<li>
+<p>For the purposes of demonstration, a preconfigured <code>openshift-tune-micro.jsonl</code> was used for the model tuning example.</p>
+</li>
+</ul>
+<p>With the Ansible training data prepared, the <em>IBM watsonx Code Assistant</em> on IBM Cloud service was configured to execute a new model tuning experiment:</p>
+<ul>
+<li>
+<p>WCA provides a graphical user experience<sup>[A]</sup> to streamline the model tuning and customization process</p>
+</li>
+<li>
+<p><strong>Tuning experiment name</strong><sup>[B]</sup> set to <code>Tuning Experiment</code> and confirmed with <strong>Create tuning experiment</strong><sup>[C]</sup></p>
+</li>
+<li>
+<p>The <code>openshift-tune-micro.jsonl</code> training data from Ansible Parser Tool is uploaded into WCA<sup>[D]</sup></p>
+</li>
+<li>
+<p>A summary of metrics— including parameters for sampling and Ansible modules —are displayed within the model tuning wizard before <strong>Start tuning</strong><sup>[E]</sup> is selected to kick off the model tuning operating</p>
+</li>
+<li>
+<p>After the tuning operation has ended, a training loss graph reveals how accurate the model's predictions are over the training data set over the course of multiple tuning cycles</p>
+</li>
+<li>
+<p>As the number of tuning cycles increase, the training loss rating will tend to decrease</p>
+</li>
+<li>
+<p>Model tuning for these particular metrics and parameters takes approximately <strong>4 hours</strong> to complete</p>
+</li>
+</ul>
+<details class="quote">
+<summary>CLICK TO EXPAND — ACCOMPANYING SCREENSHOTS</summary>
+<p><br/></p>
+<p><a class="glightbox" href="../_attachments/tuning2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/tuning2.png" width="600" /></a></p>
+<p><a class="glightbox" href="../_attachments/tuning3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/tuning3.png" width="600" /></a></p>
+<p><a class="glightbox" href="../_attachments/tuning4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/tuning4.png" width="600" /></a></p>
+<p><a class="glightbox" href="../_attachments/tuning5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/tuning5.png" width="600" /></a></p>
+<p><a class="glightbox" href="../_attachments/tuning6.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/tuning6.png" width="600" /></a></p>
+</details>
+</div>
+</li>
+</ol>
+<hr />
+<ol start="12">
+<li>
+<p>To override the <em>IBM Granite</em> base model recommendations, you must provide a pointer to a customized <em>Model ID</em> (prepared and hosted earlier on WCA) using the VS Code extension.</p>
+<div class="admonition warning">
+<p><strong>Model ID</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>7ac243b2-0897-4ea8-b208-b55fd145cdb3&lt;|sepofid|&gt;6404b81d-0638-4b7a-9b7c-786e26cf3a11
+</code></pre></div></p>
+</div>
+<ul>
+<li>
+<p>Look for Ansible under the <em>Installed</em> services in the <strong>Extensions</strong> panel.</p>
+</li>
+<li>
+<p>Click the <strong>Manage</strong> ("cogwheel") icon located just to the right of the Ansible tile</p>
+</li>
+<li>
+<p>From the drop-down options, click <strong>Extension Settings</strong><sup>[A]</sup></p>
+</li>
+<li>
+<p>Within the search bar at the top of the panel, add the text <code>Model</code> to filter the results<sup>[B]</sup></p>
+</li>
+<li>
+<p>Copy and paste the <strong>Model ID</strong> value (above) into the empty <code>Ansible &gt; Lightspeed: Model ID Override</code> field<sup>[C]</sup>, then click the <code>X</code> in the top-left corner of the panel to save and exit <em>Extension Settings</em></p>
+</li>
+</ul>
+<p><a class="glightbox" href="../_attachments/setuptroubleshoot-4b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setuptroubleshoot-4b.png" width="600" /></a></p>
+<p><a class="glightbox" href="../_attachments/tuning1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/tuning1.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="13">
+<li>
+<p>With the tuned model, WCA will recommend code using modules, functions, and other details specific to your organization's private IT environment.</p>
+<ul>
+<li>
+<p>Return to the <code>tuning-example.yml</code> Playbook from <em>Step 10</em> and delete the code recommendations generated in <em>Step 11</em></p>
+</li>
+<li>
+<p>Regenerate the code recommendations for the task by placing your cursor at the end of <strong>Line 6</strong>, hitting <span class="keys"><kbd class="key-enter">Enter</kbd></span>, and then <span class="keys"><kbd class="key-tab">Tab</kbd></span></p>
+</li>
+<li>
+<p>Observe how the tuned <em>Model ID</em> has modified WCA's code recommendations by toggling between the <code>TUNED MODEL</code> and <code>STANDARD MODEL</code> tabs below</p>
+</li>
+</ul>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">TUNED MODEL</label><label for="__tabbed_7_2">STANDARD MODEL</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-13-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-13-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-13-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-13-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-13-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-13-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-13-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-13-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-13-10">10</a></span>
+<span class="normal"><a href="#__codelineno-13-11">11</a></span>
+<span class="normal"><a href="#__codelineno-13-12">12</a></span>
+<span class="normal"><a href="#__codelineno-13-13">13</a></span>
+<span class="normal"><a href="#__codelineno-13-14">14</a></span>
+<span class="normal"><a href="#__codelineno-13-15">15</a></span>
+<span class="normal"><a href="#__codelineno-13-16">16</a></span>
+<span class="normal"><a href="#__codelineno-13-17">17</a></span>
+<span class="normal"><a href="#__codelineno-13-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="nn">---</span><span class="w"></span>
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deploy infrastructure</span><span class="w"></span>
+<a id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">all</span><span class="w"></span>
+<a id="__codelineno-13-4" name="__codelineno-13-4"></a>
+<a id="__codelineno-13-5" name="__codelineno-13-5"></a><span class="nt">tasks</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-13-6" name="__codelineno-13-6"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Create an OpenShift cluster</span><span class="w"></span>
+<a id="__codelineno-13-7" name="__codelineno-13-7"></a><span class="w">    </span><span class="nt">register</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster_create_output</span><span class="w"></span>
+<a id="__codelineno-13-8" name="__codelineno-13-8"></a><span class="w">    </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster_output.rc != 0</span><span class="w"></span>
+<a id="__codelineno-13-9" name="__codelineno-13-9"></a><span class="w">    </span><span class="nt">ibm.cloudcollection.ibm_container_cluster</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-13-10" name="__codelineno-13-10"></a><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test_cluster</span><span class="w"></span>
+<a id="__codelineno-13-11" name="__codelineno-13-11"></a><span class="w">        </span><span class="nt">datacenter</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">datacenter</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="w"></span>
+<a id="__codelineno-13-12" name="__codelineno-13-12"></a><span class="w">        </span><span class="nt">machine_type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">machine_type</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="w"></span>
+<a id="__codelineno-13-13" name="__codelineno-13-13"></a><span class="w">        </span><span class="nt">hardware</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">hardware</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="w"></span>
+<a id="__codelineno-13-14" name="__codelineno-13-14"></a><span class="w">        </span><span class="nt">kube_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4.14_openshift</span><span class="w"></span>
+<a id="__codelineno-13-15" name="__codelineno-13-15"></a><span class="w">        </span><span class="nt">public_vlan_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">public_vlan_id</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="w"></span>
+<a id="__codelineno-13-16" name="__codelineno-13-16"></a><span class="w">        </span><span class="nt">private_vlan_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">private_vlan_id</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="w"></span>
+<a id="__codelineno-13-17" name="__codelineno-13-17"></a><span class="w">        </span><span class="nt">default_pool_size</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">default_worker_pool_size</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="w"></span>
+<a id="__codelineno-13-18" name="__codelineno-13-18"></a><span class="w">        </span><span class="nt">entitlement</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">entitlement</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-14-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-14-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-14-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-14-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-14-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-14-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-14-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-14-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-14-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="nn">---</span><span class="w"></span>
+<a id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deploy infrastructure</span><span class="w"></span>
+<a id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">all</span><span class="w"></span>
+<a id="__codelineno-14-4" name="__codelineno-14-4"></a>
+<a id="__codelineno-14-5" name="__codelineno-14-5"></a><span class="nt">tasks</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-14-6" name="__codelineno-14-6"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Create an OpenShift cluster</span><span class="w"></span>
+<a id="__codelineno-14-7" name="__codelineno-14-7"></a><span class="w">    </span><span class="nt">ansible.builtin.command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oadm create-cluster --wait=false --name=openshift-cluster</span><span class="w"></span>
+<a id="__codelineno-14-8" name="__codelineno-14-8"></a><span class="w">    </span><span class="nt">register</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oadm_create_cluster</span><span class="w"></span>
+<a id="__codelineno-14-9" name="__codelineno-14-9"></a><span class="w">    </span><span class="nt">changed_when</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&#39;created&#39;</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">oadm_create_cluster.stdout&quot;</span><span class="w"></span>
+<a id="__codelineno-14-10" name="__codelineno-14-10"></a><span class="w">    </span><span class="nt">failed_when</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&#39;already</span><span class="nv"> </span><span class="s">exists&#39;</span><span class="nv"> </span><span class="s">not</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">oadm_create_cluster.stdout&quot;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+</li>
+</ol>
+<hr />
+<p>Using the tuned <em>Model ID</em>, WCA has returned a recommendation to use the <code>ibm.cloudcollection.ibm_container_cluster</code> Module for the IBM Cloud, instead of the standard <code>ansible.builtin.command</code> Module from <em>Step 11</em>. This more accurately conforms to the organization's Ansible automation standards and requirements.</p>
+<div class="admonition warning">
+<p class="admonition-title">REMOVE THE CUSTOMIZED <em>MODEL ID</em> WHEN FINISHED</p>
+<p>Remember to <strong>clear</strong> the <code>Ansible &gt; Lightspeed: Model ID Override</code> in the <em>Extension Settings</em> once you have completed <em>Step 13</em>, otherwise all subsequent code generation requests made to WCA will be produced using the customized AI model.</p>
+</div>
+<hr />
+<h1 id="_3"></h1>
+<h1 id="next-steps">Next steps</h1>
+<p>That concludes the hands-on components to this Level 3 course, but your learning and experimentation doesn't need to end here. </p>
+<p>The next <strong>OPTIONAL</strong> module will allow you craft a fully-functional Ansible Playbook for the automated deployment of an Amazon EC2 instance and WordPress application — deployable from your local machine into a live AWS environment. IBM technical sellers and business partners are <strong>NOT</strong> required to complete this section to receive Level 3 accreditation. However, it is highly recommended by the authors that you attempt the material, given the tremendous demonstration value it provides for clients.</p>
+<p>Otherwise, you are welcome to conclude the hands-on component at this point and follow the <a href="https://ibm.github.io/WCA-AnsibleLightspeed-L3/evaluation/" target="_blank">Level 3 accreditation</a> steps (depending on your role).</p>
+
+
+
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../source-matching-post-processing/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Content Source Matching and Post-Processing" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Content Source Matching and Post-Processing
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../advanced/" class="md-footer__link md-footer__link--next" aria-label="Next: (OPTIONAL) Deploying a Live AWS EC2 Instance and WordPress Application" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              (OPTIONAL) Deploying a Live AWS EC2 Instance and WordPress Application
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 IBM
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tracking", "content.code.annotate"], "search": "../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.9c69f0bc.min.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>
