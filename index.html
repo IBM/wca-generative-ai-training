@@ -312,7 +312,7 @@
 <hr />
 <p><a class="glightbox" href="_attachments/intro3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="_attachments/intro3.png" /></a></p>
 <div class="admonition quote">
-<p><code>IBM-trained watsonx.ai CodeLLM</code> is a Large Language Model (LLM) for programming languages and code, one of the many foundation models available to <em>IBM watsonx.ai</em> — and then further refined and calibrated for use with specific programming languages like COBOL, Ansible, and others. IBM watsonx Code Assistant is the flagship product for generative AI services, with a variety of options (<code>for Red Hat Ansible Lightspeed</code>, <code>for Z</code>) that are tailored to specific client use cases and business goals.</p>
+<p><code>IBM-trained watsonx.ai CodeLLM</code> is a Large Language Model (LLM) for programming languages and code, one of the many foundation models available to <code>IBM watsonx.ai</code> — and then further refined and calibrated for use with specific programming languages like COBOL, Ansible, and others. <code>IBM watsonx Code Assistant</code> is the flagship product for generative AI services, with a variety of options (<code>for Red Hat Ansible Lightspeed</code>, <code>for Z</code>) that are tailored to specific client use cases and business goals.</p>
 </div>
 <p><br/></p>
 <h1 id="_2"></h1>
@@ -325,6 +325,7 @@
 <p>Ansible Playbooks instruct Ansible’s automation engine on how to execute tasks in a step-by-step manner. Playbooks defines roles, tasks, handlers, and other configurations; in turn, these attributes allow developers and users to codify complex orchestration scenarios. Conceptually, think of a Playbook as a recipe book for system administration: each recipe (or Playbook) spells out the steps required to achieve a particular system state or to complete a given operation.</p>
 <p>One of the standout features of Ansible Playbooks is that they are <em>idempotent</em>: executing Playbooks them multiple times on the same system won't create additional "side effects" (unintended operations or creation of unwanted artifacts) after the first successful run. This ensures consistency and reliability across deployments of the Red Hat Ansible Automation Platform (<strong>AAP</strong>).</p>
 </div>
+<p><br/></p>
 <h1 id="_3"></h1>
 <h1 id="30-faster-time-to-value-observed-in-it-automation-by-adopting-ibm-watsonx-code-assistant-with-red-hat-ansible-lightspeed"><strong>30% faster time to value</strong> observed in IT automation by adopting IBM watsonx Code Assistant with Red Hat Ansible Lightspeed</h1>
 <p>Enterprise clients that are delivering an IT automation practice within their organization can be more efficient, can trust in the accuracy of their AI-generated content, and can upskill their teams faster.</p>
@@ -332,7 +333,13 @@
 <p>When there is client data submitted by the user to WCA, such as when a client is looking to perform model customization based on their own datasets (something this training will explore in detail), that data is stored directly within a client-owned Cloud Object Storage instance. The data remains accessible only to the client — it is impervious to IBM, Red Hat, or any other user besides the client who owns it.</p>
 <hr />
 <p><a class="glightbox" href="_attachments/intro4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="_attachments/intro4.png" /></a></p>
-<hr />
+<div class="admonition quote">
+<p>There are three core components to the hands-on training environment:
+    1. <code>Visual Studio Code</code> (VS Code) running on your local machine, connected via VS Code Extensions to...
+    2. <code>Ansible Automation Platform</code> (AAP) running on the Red Hat cloud, licensed for use with Red Hat Ansible Lightspeed and integrated with...
+    3. <code>IBM watsonx Code Assistant</code> (WCA) running on IBM Cloud, providing generative AI and model tuning capabilities</p>
+</div>
+<p><br/></p>
 <p>Developers and programmers must craft precise, error-free Playbooks which are potentially automating jobs across vast collections of assets or hardware. One of the benefits of automation is being able to perform such tasks at-scale; conversely, this also poses one of the greatest risks of automation — that if things fail, they can fail rapidly and across vast swathes of IT estate. It should come as no surprise, then, that authoring Playbooks often demands technical expertise and a deep understanding of the targeted systems and services which Ansible is to automate.</p>
 <p>Generative AI has recently demonstrated proficiency in creating syntactically correct and contextually relevant application code in a variety of programming languages. For example, if trained on a large dataset of Ansible Playbooks, generative AI models can be fine-tuned to understand the nuances of Playbook syntax and structure. An enterprise organization with dozens or hundreds of Playbooks within their IT estate today would have a rich corpus of training data on-hand that could be used to fine-tune AI models that are tailored to the automation needs and programming style or standards of that particular company. </p>
 <p>As you will see throughout the hands-on training material, generative AI models provide a natural language prompt to users which in turn is understood and translated by the AI models into the necessary Ansible Task code. For example, a user might describe a desired system state in plain language ("I want a Playbook to install and start the Apache web server") and the model will generate the appropriate Ansible Tasks for a Playbook.</p>
