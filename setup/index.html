@@ -557,7 +557,45 @@
 <p>Click the <strong>Explorer</strong> button at the top of the left-hand VS Code interface. Depending on your VS Code environment, the Explorer tab will look one of two ways. <strong>Click to expand</strong> whichever one of the two options best describes your situation and follow the instructions.</p>
 <details class="tip">
 <summary>I AM NEW TO <em>VS CODE</em></summary>
-<p>If you are working within a new installation of VS Code, the <strong>Explorer</strong> tab<sup>[A]</sup> will display <code>NO FOLDER OPENED</code> and give options to either <em>Open Folder</em> or <em>Clone Repository</em>. You must specify the public GitHub repository from which to "clone" the Ansible Playbook templates into the local (VS Code) environment. A "clone" request in GitHub is essentially a request to replicate code from the cloud-hosted repository into the local environment.</p>
+<p>If you are working within a new installation of VS Code, the <strong>Explorer</strong> tab<sup>[A]</sup> will display <code>NO FOLDER OPENED</code> and give options to either <em>Open Folder</em> or <em>Clone Repository</em>. You must specify the public GitHub repository from which to <code>clone</code> the Ansible Playbook templates into the local (VS Code) environment. A <code>clone</code> request in GitHub is essentially a request to replicate code from the cloud-hosted repository into the local environment.</p>
+<details class="warning">
+<summary><code>GIT NOT INSTALLED</code> — CLICK TO EXPAND</summary>
+<p>If your machine has not used <strong><a href="https://git-scm.com" target="_blank">Git</a></strong> previously, you may be prompted by VS Code to install it before attempting a <code>clone</code> request. This is more commonplace on Windows operating systems, but some MacOS users may need to install Git as well. The following instructions will guide you through the process:</p>
+<ol>
+<li>
+<p>With the VS Code application active, click the <strong>Source Control</strong><sup>[A]</sup> tab from the left-hand interface and then click <strong>Download Git</strong><sup>[B]</sup>.</p>
+</li>
+<li>
+<p>A web browser will open, directing you to the <code>git-scm.com</code> Downloads page. </p>
+<ul>
+<li>
+<p><strong>Download</strong><sup>[C]</sup> the version recommended for your machine's particular operating system.</p>
+</li>
+<li>
+<p>The recommended version will be displayed first at the top of the list. </p>
+</li>
+<li>
+<p>Execute the installer on your machine and follow along with the prompts to finish installing Git. Accept the license agreement and accept the default values on each page.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Return to VS Code and once again click the <strong>Source Control</strong><sup>[D]</sup> tab. Click the blue <strong>Initialize Repository</strong><sup>[E]</sup> button.</p>
+</li>
+<li>
+<p>From the top of the <strong>Source Control</strong> tab, click the three dots <code>...</code><sup>[F]</sup> icon to expand a drop-down menu of options. Click on the <strong>Clone</strong><sup>[G]</sup> option.</p>
+</li>
+<li>
+<p>Follow the instructions for the remainder of this section to clone the <code>ansible-wca-demo-kit</code> repository to your local machine<sup>[H]</sup>.</p>
+</li>
+</ol>
+<p><br/>
+<a class="glightbox" href="../_attachments/setupgit1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setupgit1.png" width="500" /></a></p>
+<p><a class="glightbox" href="../_attachments/setupgit2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setupgit2.png" width="500" /></a></p>
+<p><a class="glightbox" href="../_attachments/setupgit3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setupgit3.png" width="500" /></a></p>
+<p><a class="glightbox" href="../_attachments/setupgit4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setupgit4.png" width="500" /></a></p>
+<p><a class="glightbox" href="../_attachments/setupgit5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setupgit5.png" width="500" /></a></p>
+</details>
 <ul>
 <li>
 <p>Click the <strong>Clone Repository</strong> button<sup>[B]</sup>, which will open an executable console<sup>[C]</sup> at the top of VS Code</p>
@@ -616,11 +654,11 @@
 </li>
 </ol>
 <p><br/>
-<a class="glightbox" href="../_attachments/setupgit1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setupgit1.png" width="300" /></a></p>
-<p><a class="glightbox" href="../_attachments/setupgit2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setupgit2.png" width="300" /></a></p>
-<p><a class="glightbox" href="../_attachments/setupgit3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setupgit3.png" width="300" /></a></p>
-<p><a class="glightbox" href="../_attachments/setupgit4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setupgit4.png" width="300" /></a></p>
-<p><a class="glightbox" href="../_attachments/setupgit5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setupgit5.png" width="300" /></a></p>
+<a class="glightbox" href="../_attachments/setupgit1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setupgit1.png" width="500" /></a></p>
+<p><a class="glightbox" href="../_attachments/setupgit2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setupgit2.png" width="500" /></a></p>
+<p><a class="glightbox" href="../_attachments/setupgit3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setupgit3.png" width="500" /></a></p>
+<p><a class="glightbox" href="../_attachments/setupgit4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setupgit4.png" width="500" /></a></p>
+<p><a class="glightbox" href="../_attachments/setupgit5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setupgit5.png" width="500" /></a></p>
 </details>
 <ul>
 <li>
